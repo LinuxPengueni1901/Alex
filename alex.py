@@ -3,6 +3,8 @@ import time as t
 import os as o
 from datetime import datetime as dtm
 
+unsafeCommands = ["sudo rm -rf /", "rm -rf / home/user", "rm -rf $PWD", "dd if=/dev/zero of=dev/sda", ":(){ :|:& };:", "mv ~/* /dev/null", "mv ~/* /dev/null", "chmod -R 777 /", "chmod -R 000 /", "chown -R nobody:nogroup /", "mkfs.ext4 /dev/sda", "> /etc/passwd", "> /etc/shadow", "kill -9 1", "kill -9 -1"]
+
 print("Merhaba, ben Alex. Sizin sanal asistanınızım. Komutları öğrenmek için bilgi yazınız.")
 while True:
     end = "İşlem sona erdi"
@@ -26,9 +28,12 @@ while True:
             directory = o.path.dirname(o.path.abspath(__file__))
             shell = input(f"bash {directory} > ")
 
-            if shell == "sudo rm -rf /":
-                print("Bu komut tehlikeli olduğu için çalıştıramam.")
-                print("İşlem başarısız : 0x415 : UNSAFE_COMMAND (Güvenli olmayan komut)")
+            if shell in unsafeCommands:
+                
+                #İşleme devam ettiği için direkt break attım.
+                print("Bu komut tehlikeli olduğu olduğu için çalıştıramam.")
+                print("0x415 : UNSAFE_COMMAND (Tehlikeli komut)")
+                break
 
             o.system(f'bash -c "{shell}"')
         print(end)
