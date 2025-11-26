@@ -4,6 +4,8 @@ import os as o
 from datetime import datetime as dtm
 
 unsafeCommands = ["sudo rm -rf /", "rm -rf / home/user", "rm -rf $PWD", "dd if=/dev/zero of=dev/sda", ":(){ :|:& };:", "mv ~/* /dev/null", "mv ~/* /dev/null", "chmod -R 777 /", "chmod -R 000 /", "chown -R nobody:nogroup /", "mkfs.ext4 /dev/sda", "> /etc/passwd", "> /etc/shadow", "kill -9 1", "kill -9 -1"]
+commandsCanBeUnsafe = ["rm", "dd", "mkfs", "fdisk", "parted", "chmod", "chown", ":(){", "fork", "wget", "curl", "nc", "netcat", "shred", "kill", "reboot", "shutdown", "poweroff", "init", "sysrq", "> /", ">/", "/dev/null", "/dev/zero", "/dev/sda"
+]
 
 print("Merhaba, ben Alex. Sizin sanal asistanınızım. Komutları öğrenmek için bilgi yazınız.")
 while True:
@@ -29,11 +31,20 @@ while True:
             shell = input(f"bash {directory} > ")
 
             if shell in unsafeCommands:
-                
                 #İşleme devam ettiği için direkt break attım.
                 print("Bu komut tehlikeli olduğu olduğu için çalıştıramam.")
                 print("0x415 : UNSAFE_COMMAND (Tehlikeli komut)")
                 break
+
+            elif shell in commandsCanBeUnsafe:
+                print("UYARI : Lütfen bu komudu kullanırken dikkatli olun, dikkatsiz bir şekilde kullanmak sisteminize zarar verebilir.")
+                areYouSure = input("Emin misiniz E/H : ").upper()
+                if areYouSure == "E":
+                    print("İşleme kullanıcı isteği üzerine devam ediliyor.")
+
+                elif areYouSure == "H":
+                    #İşleme devam ettiği için direkt break attım.
+                    print("İşlem iptal ediliyor.")
 
             o.system(f'bash -c "{shell}"')
         print(end)
