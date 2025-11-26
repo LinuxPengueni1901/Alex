@@ -14,8 +14,8 @@ while True:
     prompt = input("")
 
     if prompt == "versiyon":
-        print("Ben Alex 1.1")
-        print("Yeni özellik : Uygulama yükleme")
+        print("Ben Alex 1.2")
+        print("Yeni özellik : Güvenli olmayan komutları engelleme")
         print(end)
 
     elif prompt == "aç":
