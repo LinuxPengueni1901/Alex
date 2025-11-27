@@ -14,8 +14,8 @@ while True:
     prompt = input("")
 
     if prompt == "versiyon":
-        print("Ben Alex 1.2")
-        print("Yeni özellik : Güvenli olmayan komutları engelleme")
+        print("Ben Alex 2.0")
+        print("Yeni özellik : Hesap makinesi")
         print(end)
 
     elif prompt == "aç":
@@ -45,6 +45,7 @@ while True:
                 elif areYouSure == "H":
                     #İşleme devam ettiği için direkt break attım.
                     print("İşlem iptal ediliyor.")
+                    break
 
             o.system(f'bash -c "{shell}"')
         print(end)
@@ -57,6 +58,7 @@ while True:
         print("Hava durumunu öğrenmek için : hava durumu yazın.")
         print("Saati öğrenmek için : saat yazın.")
         print("Uygulama yükleme : uygulama yazın, ardından paket yöneticinizi yazın daha sonra paket adını girin.")
+        print("Hesap makinesi : hesapla")
         print("Bilgilendirme sona erdi.")
 
     elif prompt == "hava durumu":
@@ -132,6 +134,31 @@ while True:
 
         else:
             print("İşlem başrısız : 0x438 : UNDEFINED_PACKAGE_INSTALLER (Tanımlanmamış paket yöneticisi)")
+
+    elif prompt == "hesapla":
+        print("Hesap makinesi")
+        print("1. Sayıyı giriniz")
+        digit1 = int(input(""))
+        print("İkinci sayıyı giriniz")
+        digit2 = int(input(""))
+        print("Lütfen yapacağınız işlemi giriniz")
+        print("Toplama : +")
+        print("Çıkarma : - ")
+        print("Çarpma : x ")
+        print("Bölme : /")
+        mathematicalOperation = input("").lower()
+
+        if mathematicalOperation == "+" or mathematicalOperation == "toplama":
+            print(f"Sonuç : {digit1 + digit2}")
+
+        elif mathematicalOperation == "-" or mathematicalOperation == "çıkarma":
+            print(f"Sonuç : {digit1 - digit2}")
+
+        elif mathematicalOperation == "x" or mathematicalOperation == "çarpma":
+            print(f"Sonuç : {digit1 * digit2}")
+
+        elif mathematicalOperation == "/" or mathematicalOperation == "bölme":
+            print(f"Sonuç : {digit1 / digit2}")
 
     else:
         print("İşlem başarısız : 0x654 : UNDEFINED_PROMPT (Tanımlanmamış istek)")
