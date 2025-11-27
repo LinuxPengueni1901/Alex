@@ -1,5 +1,5 @@
 # TR : Alex - Linux için bir sanal asistan
-Çalıştırmak için : 'python3 alex.py'
+Çalıştırmak için : ''' bash python3 alex.py'
 ### Şu anlık sadece Türkçe destekleniyor.
 Asistanın resmi web sayfası : https://sites.google.com/view/alexassistant/t%C3%BCrk%C3%A7e?authuser=0
 
